@@ -24,6 +24,13 @@
 function concatenateStrings(value1, value2) {
     throw new Error('Not implemented');
 }
+const Name1 = 'value1';
+const Name2 = 'value2';
+console.log(Name1.concat(Name2));
+console.log(''.concat(Name2));
+console.log(''.concat(Name1));
+
+
 
 
 /**
@@ -41,6 +48,10 @@ function getStringLength(value) {
     throw new Error('Not implemented');
 }
 
+const x = 'value';
+console.log('Слово value имеет ' + x.length + ' букв');
+
+
 /**
  * Returns the result of string template and given parameters firstName and lastName.
  * Please do not use concatenation, use template string :
@@ -57,6 +68,10 @@ function getStringLength(value) {
 function getStringFromTemplate(firstName, lastName) {
     throw new Error('Not implemented');
 }
+function getStringFromTemplate(firstName, lastName) {
+    return `Hello, ${firstName} ${lastName}!`
+}
+
 
 /**
  * Extracts a name from template string 'Hello, First_Name Last_Name!'.
@@ -70,6 +85,9 @@ function getStringFromTemplate(firstName, lastName) {
  */
 function extractNameFromTemplate(value) {
     throw new Error('Not implemented');
+}
+function extractNameFromTemplate(value) {
+    return value.replace('Hello, ', '').replace('!', '');
 }
 
 
@@ -86,6 +104,12 @@ function extractNameFromTemplate(value) {
 function getFirstChar(value) {
     throw new Error('Not implemented');
 }
+var x = 'value';
+console.log(x.charAt(0));
+console.log(x.slice(0,1));           
+console.log(x.substring(0,1)); 
+console.log(x.substr(0,1));    
+console.log(x[0]);             
 
 /**
  * Removes a leading and trailing whitespace characters from string.
@@ -101,6 +125,8 @@ function getFirstChar(value) {
 function removeLeadingAndTrailingWhitespaces(value) {
     throw new Error('Not implemented');
 }
+let x = '   value   ';
+console.log(x.trim());
 
 /**
  * Returns a string that repeated the specified number of times.
@@ -116,6 +142,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
 function repeatString(value, count) {
     throw new Error('Not implemented');
 }
+function repeatString(value, count) {
+    return value.repeat(count);
+}
+
+
 
 /**
  * Remove the first occurrence of string inside another string
@@ -133,6 +164,16 @@ function removeFirstOccurrences(str, value) {
     throw new Error('Not implemented');
 }
 
+function remove_first_occurrence(str, searchstr)       {
+	var index = str.indexOf(searchstr);
+	if (index === -1) {
+		return str;
+	}
+	return str.slice(0, index) + str.slice(index + searchstr.length);
+}
+
+console.log(remove_first_occurrence("To be or not to be", 'not'));
+
 /**
  * Remove the first and last angle brackets from tag string
  *
@@ -147,7 +188,12 @@ function removeFirstOccurrences(str, value) {
 function unbracketTag(str) {
     throw new Error('Not implemented');
 }
+let newstr = str.replace('<', ""); 
+return newstr.replace('>', "");
 
+function unbracketTag(str) {
+    return str.slice(1, -1);
+}
 
 /**
  * Converts all characters of the specified string into the upper case
@@ -162,7 +208,9 @@ function unbracketTag(str) {
 function convertToUpperCase(str) {
     throw new Error('Not implemented');
 }
-
+function convertToUpperCase(str) {
+    return str.ToUpperCase();
+}
 /**
  * Extracts e-mails from single string with e-mails list delimeted by semicolons
  *
@@ -175,6 +223,9 @@ function convertToUpperCase(str) {
  */
 function extractEmails(str) {
     throw new Error('Not implemented');
+}
+function extractEmails(str) {
+    return str.split(';');
 }
 
 /**
@@ -203,7 +254,10 @@ function extractEmails(str) {
 function getRectangleString(width, height) {
     throw new Error('Not implemented');
 }
-
+function getRectangleString(width, height) {
+    let Str = '─'.repeat(width - 2);
+    return `┌${Str}┐\n` + `│${' '.repeat(width - 2)}│\n`.repeat(height - 2) + `└${Str}┘\n`;
+}
 
 /**
  * Encode specified string with ROT13 cipher
@@ -223,6 +277,11 @@ function getRectangleString(width, height) {
 function encodeToRot13(str) {
     throw new Error('Not implemented');
 }
+function encodeToRot13(str) {
+    return str.replace(/[a-zA-Z]/g, function (c) {
+        return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+    });
+}
 
 /**
  * Returns true if the value is string; otherwise false.
@@ -240,8 +299,9 @@ function encodeToRot13(str) {
 function isString(value) {
     throw new Error('Not implemented');
 }
-
-
+function isString(value) {
+    return value ? typeof value.valueOf() == 'string' : false;
+}
 /**
  * Returns playid card id.
  * 
@@ -268,6 +328,11 @@ function isString(value) {
  */
 function getCardId(value) {
     throw new Error('Not implemented');
+}
+function getCardId(value) {
+    let cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+    let suits = ['♣', '♦', '♥', '♠'];
+    return cards.indexOf(value.slice(0, -1)) + suits.indexOf(value.slice(-1)) * cards.length;
 }
 
 
