@@ -24,7 +24,9 @@
 function getRectangleArea(width, height) {
     throw new Error('Not implemented');
 }
-
+function getRectangleArea(width, height){
+  return width * height;  
+}
 
 /**
  * Returns a circumference of circle given by radius.
@@ -40,7 +42,9 @@ function getRectangleArea(width, height) {
 function getCicleCircumference(radius) {
     throw new Error('Not implemented');
 }
-
+function getCicleCircumference(radius) {
+    return radius * Math.PI * 2;
+}
 /**
  * Returns an average of two given numbers.
  *
@@ -56,7 +60,9 @@ function getCicleCircumference(radius) {
 function getAverage(value1, value2) {
     throw new Error('Not implemented');
 }
-
+function getAverage(value1, value2) {
+    return value1 / 2 + value2 / 2
+}
 /**
  * Returns a distance beetween two points by cartesian coordinates.
  *
@@ -75,6 +81,10 @@ function getAverage(value1, value2) {
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
     throw new Error('Not implemented');
 }
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
+}
+
 
 /**
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
@@ -90,6 +100,9 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  */
 function getLinearEquationRoot(a, b) {
     throw new Error('Not implemented');
+}
+function getLinearEquationRoot(a, b) {
+    return -b/a;
 }
 
 
@@ -113,6 +126,9 @@ function getLinearEquationRoot(a, b) {
 function getAngleBetweenVectors(x1, y1, x2, y2) {
     throw new Error('Not implemented');
 }
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+    return Math.acos(x1 * x2 + y1 * y2 - (Math.sqrt(x1 * y1) + Math.sqrt(x2 *y2)));
+}  
 
 /**
  * Returns a last digit of a integer number.
@@ -130,6 +146,9 @@ function getLastDigit(value) {
     throw new Error('Not implemented');
 }
 
+function getLastDigit(value) {
+    return value % 10;
+}
 
 /**
  * Returns a number by given string representation.
@@ -144,6 +163,9 @@ function getLastDigit(value) {
  */
 function parseNumberFromString(value) {
     throw new Error('Not implemented');
+}
+function parseNumberFromString(value) {
+    return +value;
 }
 
 /**
@@ -161,6 +183,9 @@ function parseNumberFromString(value) {
  */
 function getParallelipidedDiagonal(a,b,c) {
     throw new Error('Not implemented');
+}
+function getParallelipidedDiagonal(a,b,c) {
+    return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2));
 }
 
 /**
@@ -183,6 +208,12 @@ function getParallelipidedDiagonal(a,b,c) {
 function roundToPowerOfTen(num, pow) {
     throw new Error('Not implemented');
 }
+function roundToPowerOfTen(num, pow) {
+    if (num % Math.pow(10, pow) >= 5 * Math.pow(10, pow -1)) {
+return num + (Math.pow(10, pow) - num % Math.pow(10, pow));
+    }
+    return num - (num % Math.pow(10, pow));
+}
 
 /**
  * Returns true is the number is prime; otherwise false.
@@ -204,6 +235,13 @@ function roundToPowerOfTen(num, pow) {
 function isPrime(n) {
     throw new Error('Not implemented');
 }
+function isPrime(n) {
+    for (let i = 2; i < n / 2 + 1; i++) {
+        if (n % i == 0)
+            return false;
+    }
+    return n !== 1;
+}
 
 /**
  * Tries to convert value to number and returns it if conversion was successfull;
@@ -223,6 +261,11 @@ function isPrime(n) {
 function toNumber(value, def) {
     throw new Error('Not implemented');
 }
+function toNumber(value, def) {
+    return typeof +value == 'number' && !isNaN(+value) ? +value : def;
+}
+
+
 
 module.exports = {
     getRectangleArea: getRectangleArea,
