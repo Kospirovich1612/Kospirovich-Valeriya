@@ -24,7 +24,9 @@
 function parseDataFromRfc2822(value) {
    throw new Error('Not implemented');
 }
-
+function parseDataFromRfc2822(value) {
+   return new Date(value);
+}
 /**
  * Parses an ISO 8601 string date representation into date value
  * For ISO 8601 date specification refer to : https://en.wikipedia.org/wiki/ISO_8601
@@ -38,6 +40,9 @@ function parseDataFromRfc2822(value) {
  */
 function parseDataFromIso8601(value) {
    throw new Error('Not implemented');
+}
+function parseDataFromIso8601(value) {
+   return Date.parse(value);
 }
 
 
@@ -57,6 +62,30 @@ function parseDataFromIso8601(value) {
  */
 function isLeapYear(date) {
    throw new Error('Not implemented');
+}
+/**
+ * if ( год не делится на 4), то (это обычный год)
+*else if ( год не делится на 100) then (это високосный год)
+*else if ( год не делится на 400) then (это обычный год)
+*else (это високосный год)
+ */
+
+function isLeapYear(date) {
+   let result; 
+    date = parseInt(document.getElementById("isDate").value);
+    if (dates/400){
+      result = true
+    }
+    else if(dates/100){
+      result = false
+    }
+    else if(dates/4){
+      result= true
+    }
+    else{
+      result= false
+    }
+    return result
 }
 
 
@@ -79,6 +108,9 @@ function timeSpanToString(startDate, endDate) {
    throw new Error('Not implemented');
 }
 
+function timeSpanToString(startDate, endDate) {
+   return (new Date(endDate - startDate)).toISOString().slice(11, -1);
+}
 
 /**
  * Returns the angle (in radians) between the hands of an analog clock for the specified Greenwich time.
@@ -97,7 +129,13 @@ function angleBetweenClockHands(date) {
     throw new Error('Not implemented');
 }
 
-
+function angleBetweenClockHands(date) {
+let hour = date.getUTCHours() > 12 ? date.getUTCHours() - 12 : date.getUTCHours();
+    let hours = 0.5 * (60 * hour + date.getUTCMinutes());
+    let minutes = 6 * date.getUTCMinutes();
+    let difference = hours - minutes > 180 ? hours - minutes - 180 : hours - minutes;
+    return Math.PI * Math.abs(difference) / 180;
+}
 module.exports = {
     parseDataFromRfc2822: parseDataFromRfc2822,
     parseDataFromIso8601: parseDataFromIso8601,
